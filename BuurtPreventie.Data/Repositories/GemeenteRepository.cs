@@ -29,7 +29,6 @@ namespace BuurtPreventie.Data.Repositories
 
             return _context.Gemeentes
                 .Where(g => g.Postcode.ToString().Contains(filter) || g.Naam.Contains(filter))
-                .Take(7)
                 .ToList();
         }
 
