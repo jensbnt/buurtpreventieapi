@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BuurtPreventie.Data.Repositories.Interfaces;
-using BuurtPreventie.Domain;
-using BuurtPreventie.Models;
-using Microsoft.AspNetCore.Http;
+﻿using BuurtPreventie.Data.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuurtPreventie.Controllers
@@ -37,16 +30,6 @@ namespace BuurtPreventie.Controllers
             var gemeente = _gemeenteRepository.GetById(id);
 
             return Ok(gemeente);
-        }
-
-        // POST: api/Gemeente
-        [HttpPost]
-        public IActionResult Post([FromBody] GemeenteModel model)
-        {
-            Gemeente gemeente = model.GetGemeente();
-            var id = _gemeenteRepository.Add(gemeente);
-
-            return Ok(id);
         }
     }
 }

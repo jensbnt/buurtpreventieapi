@@ -18,7 +18,9 @@ namespace BuurtPreventie.Data.Repositories
 
         public ICollection<Opmerking> GetAll()
         {
-            return _context.Opmerkingen.ToList();
+            return _context.Opmerkingen
+                .OrderBy(o => o.Tijd)
+                .ToList();
         }
 
         public ICollection<Opmerking> GetAllByZoneId(int zoneId)

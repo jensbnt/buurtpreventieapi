@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace BuurtPreventie.Models
 {
-    public class GemeenteModel
+    public class CreateZoneModel
     {
-        public string Postcode { get; set; }
         public string Naam { get; set; }
+        public string Beschrijving { get; set; }
+        public int GemeenteId { get; set; }
 
-        public Gemeente GetGemeente()
+        public Zone ToZone()
         {
-            return new Gemeente
+            return new Zone
             {
-                Postcode = int.Parse(Postcode),
                 Naam = Naam,
+                Beschrijving = Beschrijving,
+                GemeenteId = GemeenteId
             };
         }
     }

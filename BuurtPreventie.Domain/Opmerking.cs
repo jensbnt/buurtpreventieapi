@@ -11,7 +11,7 @@ namespace BuurtPreventie.Domain
         public string Tekst { get; set; }
         public string Gebruiker { get; set; }
 
-        public DateTime Tijd { get; } = DateTime.Now;
+        public DateTime Tijd { get; set; }
 
         public int ZoneId { get; set; }
         public Zone Zone { get; set; }

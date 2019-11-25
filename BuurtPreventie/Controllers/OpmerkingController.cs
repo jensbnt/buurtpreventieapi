@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BuurtPreventie.Data.Repositories.Interfaces;
-using BuurtPreventie.Domain;
-using Microsoft.AspNetCore.Http;
+﻿using BuurtPreventie.Data.Repositories.Interfaces;
+using BuurtPreventie.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuurtPreventie.Controllers
@@ -29,14 +24,15 @@ namespace BuurtPreventie.Controllers
             return Ok(opmerkingen);
         }
 
-        // POST: api/Opmerking/zone/5
-        [HttpPost("zone/{zoneId}")]
-        public IActionResult Post(int zoneId, [FromBody] Opmerking opmerking)
+        // POST: api/Opmerking
+        [HttpPost]
+        public IActionResult Post([FromBody] CreateOpmerkingModel model)
         {
-            opmerking.ZoneId = zoneId;
-            _opmerkingRepository.Add(opmerking);
+            var opmerking = model.ToOpmerking();
 
-            return Ok();
+            var id = _opmerkingRepository.Add(opmerking);
+
+            return Ok(id);
         }
     }
 }

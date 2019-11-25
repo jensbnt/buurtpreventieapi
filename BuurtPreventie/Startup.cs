@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuurtPreventie.Converters;
 using BuurtPreventie.Data;
 using BuurtPreventie.Data.Repositories;
 using BuurtPreventie.Data.Repositories.Interfaces;
@@ -37,7 +38,13 @@ namespace BuurtPreventie
 
             services.AddDbContext<BuurtPreventieContext>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(
+                    options =>
+                    {
+                        options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
+                    }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

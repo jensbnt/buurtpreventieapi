@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BuurtPreventie.Data.Repositories.Interfaces;
-using BuurtPreventie.Domain;
-using Microsoft.AspNetCore.Http;
+﻿using BuurtPreventie.Data.Repositories.Interfaces;
+using BuurtPreventie.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuurtPreventie.Controllers
@@ -40,8 +35,10 @@ namespace BuurtPreventie.Controllers
 
         // POST: api/Zone
         [HttpPost]
-        public IActionResult Post([FromBody] Zone zone)
+        public IActionResult Post([FromBody] CreateZoneModel model)
         {
+            var zone = model.ToZone();
+
             var id = _zoneRepository.Add(zone);
 
             return Ok(id);
