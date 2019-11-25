@@ -4,14 +4,16 @@ using BuurtPreventie.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BuurtPreventie.Data.Migrations
 {
     [DbContext(typeof(BuurtPreventieContext))]
-    partial class BuurtPreventieContextModelSnapshot : ModelSnapshot
+    [Migration("20191125145635_updated_tijd")]
+    partial class updated_tijd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
